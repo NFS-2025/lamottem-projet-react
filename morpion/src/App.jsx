@@ -4,12 +4,12 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import "./components/square.jsx";
 import Square from "./components/square.jsx";
+import Grille from "./components/Grille.jsx";
 
 function App() {
-  const value = "X";
   return (
     <>
-      <div className="">
+      {/* <div className="">
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
             <Square value="O" onClick={() => console.log("clicked")} />
@@ -27,6 +27,10 @@ function App() {
             <Square value="" onClick={() => console.log("clicked")} />
           </div>{" "}
         </div>
+      </div> */}
+
+      <div className="flex flex-row w-full gap-2">
+        <Grille />
       </div>
     </>
   );
