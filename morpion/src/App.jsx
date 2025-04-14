@@ -28,7 +28,7 @@ function App() {
           </div>{" "}
         </div>
       </div> */}
-
+      <h1 className="mb-6">Morpion</h1>
       <div className="flex flex-row w-full gap-2">
         <Grille />
       </div>
