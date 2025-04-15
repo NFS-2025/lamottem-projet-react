@@ -1,7 +1,7 @@
 function NavBar() {
     return (
 
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm ">
         <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -10,7 +10,7 @@ function NavBar() {
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><a href="/">Acueille</a></li>
+                        <li><a href="/">Acueill</a></li>
                              <li><a href="/list-card">Pokemon List</a></li>
                         <li><a href="/contact">contact</a></li>      
                    
@@ -20,13 +20,16 @@ function NavBar() {
         </div>
         <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-                    <li><a href="/">Acueille</a></li>
+                    <li><a href="/">Acueill</a></li>
                     <li><a href="/list-card">Pokemon List</a></li>
-                    
-                    <li><a href="/contact">contact</a></li>
+                    {/* <li><a href="/contact">contact</a></li> */}
+                    <li><a href="/login">login</a></li>
+                    <li><a href="/register">register</a></li>
                        
             </ul>
-        </div>
+            </div>
+            
+
      
         </div>
     )
