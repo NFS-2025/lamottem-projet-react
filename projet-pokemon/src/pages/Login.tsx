@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Login() {
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
@@ -24,16 +28,39 @@ export default function Login() {
     setErrors(newErrors)
   }, [email, password, submitted])
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitted(true)
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  setSubmitted(true)
 
-    if (Object.keys(errors).length > 0) {
-      return
-    }
-
-    alert('Connexion réussie !')
+  if (Object.keys(errors).length > 0) {
+    return
   }
+
+  try {
+    const response = await fetch('http://localhost:3001/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+      alert('Connexion réussie !')
+      console.log('Token reçu :', data.token)
+      localStorage.setItem('token', data.token)
+      navigate('/list-card')
+      window.location.reload()
+    } else {
+      alert(data.message || 'Erreur lors de la connexion.')
+    }
+  } catch (error) {
+    console.error('Erreur de requête :', error)
+    alert('Une erreur est survenue.')
+  }
+}
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

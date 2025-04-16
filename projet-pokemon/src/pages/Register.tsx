@@ -1,4 +1,6 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
@@ -8,6 +10,8 @@ type FormData = {
   tel: string
   password: string
 }
+
+
 
 
 const schema = yup.object().shape({
@@ -27,6 +31,8 @@ const schema = yup.object().shape({
 })
 
 export default function Register() {
+
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -35,10 +41,31 @@ export default function Register() {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = (data: FormData) => {
-    alert('Inscription réussie !')
-    console.log(data)
+const onSubmit = async (data: FormData) => {
+  try {
+    const response = await fetch('http://localhost:3001/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    const result = await response.json()
+
+    if (response.ok) {
+  alert('Inscription réussie !')
+  navigate('/login')
+}
+else {
+      alert(result.message || 'Erreur lors de l’inscription.')
+    }
+  } catch (error) {
+    console.error('Erreur de requête :', error)
+    alert('Une erreur est survenue.')
   }
+}
+
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
