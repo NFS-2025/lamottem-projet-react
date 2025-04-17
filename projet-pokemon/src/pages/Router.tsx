@@ -8,7 +8,6 @@ import Register from './Register';
 import CardDetails from "../components/CardDetails";
 import RequireAuth from '../components/RequireAuth'; 
 import FunZone from './FunZone';
-import BilelZone from './BilelZone';
 import NotFound from "./NotFound";
 
 const Router : React.FC = () => {

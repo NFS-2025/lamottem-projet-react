@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Card } from "../types/Card"; // ou déclare l'interface ici si besoin
 
 const CardDetails = () => {
   const { id } = useParams();
-  const [card, setCard] = useState(null);
+  const [card, setCard] = useState<Card | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://api.tcgdex.net/v2/fr/cards/${id}`)
+    axios.get<Card>(`https://api.tcgdex.net/v2/fr/cards/${id}`)
       .then((response) => {
         setCard(response.data);
         setLoading(false);

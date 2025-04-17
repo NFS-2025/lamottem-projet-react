@@ -1,36 +1,52 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface Card {
+  id: string;
+  name: string;
+  image: string;
+  hp?: string;
+  types?: string[];
+  rarity?: string;
+  illustrator?: string;
+  set?: {
+    name: string;
+  };
+}
+
+
 const PokeSwipeLite = () => {
-  const [cards, setCards] = useState([]);
-  const [index, setIndex] = useState(0);
-  const [favorites, setFavorites] = useState([]);
-  const [direction, setDirection] = useState(null);
+const [cards, setCards] = useState<Card[]>([]);
+const [favorites, setFavorites] = useState<Card[]>([]);
+const [index, setIndex] = useState<number>(0);
+const [direction, setDirection] = useState<"left" | "right" | null>(null);
+
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]") as Card[];
     setFavorites(storedFavorites);
   }, []);
 
 
   useEffect(() => {
     axios.get("https://api.tcgdex.net/v2/fr/sets/sv03.5").then((response) => {
-      const validCards = response.data.cards.filter(
-        (card) => card.image && card.image.startsWith("http")
-      );
+   const validCards = response.data.cards.filter(
+  (card: Card) => card.image && card.image.startsWith("http")
+);
+
       setCards(validCards);
     });
   }, []);
 
 
-  const addToFavorites = (card) => {
+  const addToFavorites = (card: Card) => {
     const updated = [...favorites, card];
     setFavorites(updated);
     localStorage.setItem("favorites", JSON.stringify(updated));
   };
 
-  const swipe = (dir) => {
+  const swipe = (dir: "left" | "right") => {
     setDirection(dir);
     setTimeout(() => {
       if (dir === "right") {

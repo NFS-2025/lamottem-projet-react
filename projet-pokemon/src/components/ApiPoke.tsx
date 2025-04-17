@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
+import { Card } from "../types/Card"; 
 
 const ApiPoke = () => {
-  const [cards, setCards] = useState([]);
-  const [filteredCards, setFilteredCards] = useState([]);
+const [cards, setCards] = useState<Card[]>([]);
+const [filteredCards, setFilteredCards] = useState<Card[]>([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,7 @@ const ApiPoke = () => {
     axios.get("https://api.tcgdex.net/v2/fr/sets/sv03.5")
       .then((response) => {
         const validCards = response.data.cards.filter(
-          (card) => card.image && card.image.startsWith("http")
+          (card: Card) => card.image && card.image.startsWith("http")
         );
         setCards(validCards);
         setFilteredCards(validCards);
@@ -31,7 +32,7 @@ const ApiPoke = () => {
   }, []);
 
   useEffect(() => {
-    const result = cards.filter((card) =>
+    const result = cards.filter((card: Card) =>
       card.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredCards(result);
