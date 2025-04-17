@@ -44,7 +44,7 @@ const ApiPoke = () => {
     <div className="p-5">
       <h1 className="text-2xl underline mb-3">Cartes du set : Prismatic Evolutions</h1>
 
-      <div className="mb-5">
+      <div className="mb-5 flex justify-between">
         <input
           type="text"
           placeholder="Rechercher par nom..."
@@ -52,15 +52,16 @@ const ApiPoke = () => {
           onChange={(e) => setSearch(e.target.value)}
           className="p-2 rounded border w-full max-w-md"
         />
+            <p className="mb-3">Nombre de cartes : {filteredCards.length}</p>
       </div>
 
-      <p className="mb-3">Nombre de cartes : {filteredCards.length}</p>
+  
 
-      <ul className="flex gap-2 flex-wrap">
+      <ul className="flex gap-2 flex-wrap justify-center">
         {currentCards.map((card) => (
           <li
             key={card.id}
-            className="border p-4 rounded-lg border-white hover:bg-white hover:text-black transition w-44 text-center cursor-pointer"
+            className=" p-4 rounded-lg border-black hover:bg-gray-400 hover:text-black transition w-44 text-center cursor-pointer shadow-2xl"
             onClick={() => window.location.href = `/details/${card.id}`}
           >
             <p>{card.name}</p>
@@ -74,7 +75,7 @@ const ApiPoke = () => {
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
-          className="px-4 py-2 border rounded hover:bg-white hover:text-black disabled:opacity-30"
+          className="px-4 py-2 border rounded hover:bg-gray-400 hover:text-black disabled:opacity-30"
         >
           ⬅️ Précédent
         </button>
@@ -82,7 +83,7 @@ const ApiPoke = () => {
         <button
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 border rounded hover:bg-white hover:text-black disabled:opacity-30"
+          className="px-4 py-2 border rounded hover:bg-gray-400 hover:text-black disabled:opacity-30"
         >
           Suivant ➡️
         </button>

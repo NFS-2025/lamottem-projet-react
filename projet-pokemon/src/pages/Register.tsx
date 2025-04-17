@@ -70,7 +70,7 @@ else {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-white">
+        <h2 className="mt-10 text-center text-2xl font-bold tracking-tight text-black">
           Inscription
         </h2>
       </div>
@@ -79,7 +79,7 @@ else {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Nom */}
           <div>
-            <label htmlFor="nom" className="block text-sm font-medium text-white">
+            <label htmlFor="nom" className="block text-sm font-medium text-black">
               Nom
             </label>
             <div className="mt-2">
@@ -95,7 +95,7 @@ else {
 
     
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label htmlFor="email" className="block text-sm font-medium text-black">
               Email
             </label>
             <div className="mt-2">
@@ -111,7 +111,7 @@ else {
 
     
           <div>
-            <label htmlFor="tel" className="block text-sm font-medium text-white">
+            <label htmlFor="tel" className="block text-sm font-medium text-black">
               Téléphone
             </label>
             <div className="mt-2">
@@ -127,7 +127,7 @@ else {
 
           
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-white">
+            <label htmlFor="password" className="block text-sm font-medium text-black">
               Mot de passe
             </label>
             <div className="mt-2">
