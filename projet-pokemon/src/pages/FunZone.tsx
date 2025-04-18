@@ -40,7 +40,7 @@ const callChen = () => {
   setMessage("📞 Appel en cours...");
   audio.play();
 
-  // Quand le premier audio se termine, on joue le deuxième
+
   audio.onended = () => {
     bilel.play();
     setMessage("💬 Wallah j'suis occupé frère, rappelle plus tard.");

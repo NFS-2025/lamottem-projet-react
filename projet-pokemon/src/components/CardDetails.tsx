@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { Card } from "../types/Card"; // ou déclare l'interface ici si besoin
+import { Card } from "../types/Card"; 
 
 const CardDetails = () => {
   const { id } = useParams();
