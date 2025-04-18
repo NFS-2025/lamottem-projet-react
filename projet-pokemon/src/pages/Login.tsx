@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
@@ -123,9 +123,10 @@ export default function Login() {
         </form>
 
         <p className="mt-10 text-center text-sm/6 text-gray-500">
-          <a href="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
-            register
-          </a>
+          <Link to="/register" className="font-semibold text-indigo-600 hover:text-indigo-500">
+            Register 
+          </Link>
+         
         </p>
       </div>
     </div>

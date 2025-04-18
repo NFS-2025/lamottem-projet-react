@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -156,9 +157,9 @@ else {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Déjà inscrit ?{' '}
-          <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+              <Link to="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">
             Connectez-vous
-          </a>
+          </Link>
         </p>
       </div>
     </div>
