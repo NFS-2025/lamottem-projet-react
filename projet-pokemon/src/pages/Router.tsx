@@ -12,7 +12,7 @@ import NotFound from "./NotFound";
 
 const Router : React.FC = () => {
     return (
-        <BrowserRouter>
+ 
         <Routes>
             <Route path="/" element={<Accueil />} />
             <Route path="/contact" element={<Contact />} />
@@ -31,7 +31,7 @@ const Router : React.FC = () => {
 />
             <Route path="*" element={<NotFound />} />
         </Routes>
-        </BrowserRouter>
+       
     );
     }
 
