@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Card } from "../types/Card"; // ou déclare l'interface ici si besoin
 
 const CardDetails = () => {
@@ -32,6 +32,12 @@ const CardDetails = () => {
       <p><strong>Rareté :</strong> {card.rarity}</p>
       <p><strong>Illustrateur :</strong> {card.illustrator}</p>
       <p><strong>Set :</strong> {card.set?.name}</p>
+
+        <div className='flex justify-center w-full'>
+        <Link to="/list-card" className='flex justify-center p-10 max-w-[500px]'>
+          <button className='btn btn-primary p-5 w-full'>Retour</button>
+        </Link>
+        </div>
     </div>
   );
 };
